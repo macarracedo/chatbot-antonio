@@ -1,0 +1,10 @@
+CDI
+Concurrencia y distribucion
+HAE
+Hardware de aplicacion especifica
+SI
+Sistemas inteligentes
+TALF
+Teoria de automatas y lenguaje formal
+DGP
+Direccion y gestion de proyectos

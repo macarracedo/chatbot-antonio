@@ -1,0 +1,5 @@
+sistemas inteligentes
+concurrencia y distribucion
+hardware de aplicacion especifica
+direccion y gestion de proyectos
+teoria de automatas
