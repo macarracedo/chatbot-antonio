@@ -44,8 +44,18 @@
   </category>
 
   <category>
-    <pattern>INIT # ADIOS ^</pattern>
-    <template><srai>Hasta luego, ha sido un placer</srai></template>
+    <pattern>INIT ADIOS</pattern>
+    <template>Hasta luego, ha sido un placer hablar contigo.</template>
+  </category>
+
+  <category>
+    <pattern>INIT CHAO</pattern>
+    <template><srai>INIT ADIOS</srai></template>
+  </category>
+
+  <category>
+    <pattern>INIT HASTA LUEGO</pattern>
+    <template><srai>INIT ADIOS</srai></template>
   </category>
   
   <!--¿COMO TE LLAMAS?-->
