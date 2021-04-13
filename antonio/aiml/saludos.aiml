@@ -42,6 +42,11 @@
     <pattern>INIT # BUENAS TARDES ^</pattern>
     <template><srai>INIT HOLA</srai></template>
   </category>
+
+  <category>
+    <pattern>INIT # ADIOS ^</pattern>
+    <template><srai>Hasta luego, ha sido un placer</srai></template>
+  </category>
   
   <!--¿COMO TE LLAMAS?-->
   
