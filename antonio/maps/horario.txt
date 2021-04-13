@@ -1,0 +1,5 @@
+SI:lunes
+CDI:martes
+HAE:miercoles
+DGP:jueves
+TALF:viernes

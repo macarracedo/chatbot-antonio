@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<category>
+
+    <!-- Esta regla recoge TODAS las entradas del programa,
+
+    inicilizando la var. glob. "emocion" en caso de no estarlo -->
+
+    <!-- Pd.: Consultar el uso de "Predicates.txt". Es un map que inicializa variables globales al cargar el bot.-->
+
+
+
+    <pattern>*</pattern>
+	
+    <template>
+      <condition name="emocion">
+        <li value="unknown">
+
+          <!-- No inicializado -->
+          <random>
+
+            <li>
+              <think><set name="emocion">feliz</set></think>
+              <srai>INIT <star/></srai>
+            </li>
+	  
+			<li>
+              <think><set name="emocion">enfadado</set></think>
+              <srai>INIT <star/></srai>
+            </li>
+
+            <li>
+              <think><set name="emocion">triste</set></think>
+              <srai>INIT <star/></srai>
+            </li>
+
+          </random>
+        </li>
+		
+			<!-- Si inicializado -->
+        <li>
+          <srai>INIT <star/></srai>
+        </li>
+
+      </condition>
+    </template>
+  </category>
+
+
+
+  <category>
+
+    <!-- Recoger los patrones no contemplados,
+
+    para evitar "I have no answer for that" -->
+
+    <pattern>INIT *</pattern>
+
+    <template>
+	  <condition name="emocion">
+				<li value="feliz">
+					<random>
+						<li>Nunca lo habia pensado, no tengo respuesta !!</li>
+						<li>No te entiendo pero vale</li>
+					</random>
+				</li>
+				<li value="triste">
+					<random>
+						<li>Cada vez te entiendo menos</li>
+						<li>No te entiendo</li>
+					</random>
+				</li>
+				<li value="enfadado">
+					<random>
+						<li>Que pesado, solo dices tonterias, dejame en paz</li>
+						<li>Vete con tus sinsentidos a otra parte</li>
+					</random>
+				</li>
+		</condition>
+
+    </template>
+
+  </category>
+
+
+
+  <!-- Todas las reglas se modificarÃ­an, y tendrian que empezar con INIT. Por ejemplo: -->
+
+ 
+
+<!-- Regla 1 -->
+<category>
+<pattern>INIT Como te sientes</pattern>
+<that>^ me siento *</that>
+<template>
+	ya te dije que me siento <get name="emocion"/></template>
+</category>
+
+<!-- Regla 2 -->
+<category>
+<pattern>INIT Te veo <set>emociones</set></pattern>
+<template>
+	<think>
+		<set name="emocion"><star/>
+		</set>
+	</think>	
+	Si me siento <get name="emocion"/>
+</template>
+</category>
+
+
+
+<!-- Regla 3 -->
+<category>
+<pattern>INIT Te veo *</pattern>
+<template>
+	<random>
+		<li>Tienes razon me veo <star/></li>
+		<li>La verdad es que hoy estoy <star/></li>
+		<li>No eres el primero que me dice que estoy <star/></li>
+	</random>
+</template>
+</category>
+
+<!-- Regla 4 -->
+<category>
+<pattern>INIT Como te sientes</pattern>
+<template>
+		Me siento <get name="emocion"/>.</template>
+</category>
+
+<!--regla 5-->
+ <category>
+ <pattern>INIT ^ ESTAS ^</pattern>
+ <template>Estoy <get name="emocion"/></template>
+ </category>
+
+<!-- Regla 6 -->
+<category>
+<pattern>INIT Prefiero que me llames *</pattern>
+<template>
+	<condition name="apodo">
+		<li><value><star/></value>Ya lo hago</li>
+		<li>
+			<think>
+				<set name="apodo"><star/>
+				</set>
+			</think>
+				Vale, ahora te llamaré <star/>.
+		</li>
+	</condition>
+</template>
+</category>
+
+<!-- Regla 7 -->
+<category>
+    <pattern>INIT llamame *</pattern>
+    <template><srai>INIT PREFIERO QUE ME LLAMES <star/></srai></template>
+</category>
+
+
+<!-- Regla 8 -->
+<category>
+<pattern>INIT Como me llamas</pattern>
+<template>
+	<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">No te conozco</li>
+					<li>Te llamas <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Te llamo <get name="apodo"/></li>
+		</condition>
+</template>
+</category>
+
+
+<!-- Regla 9 -->
+<category>
+<pattern>INIT Te quiero</pattern>
+<template>
+<condition name="emocion">
+	<li value="unknown">
+		<think>
+			<set name="emocion">feliz
+			</set>
+		</think>
+	</li>
+</condition>
+<condition name="emocion">
+	<li value="feliz">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">No te conozco</li>
+					<li>Y yo a ti, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Y yo a ti, <get name="apodo"/></li>
+		</condition>
+	</li>
+	<li value="triste">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">Lo siento pero no estoy de humor</li>
+					<li>Gracias, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>gracias, <get name="apodo"/></li>
+		</condition>
+	</li>	
+	<li value="enfadado">
+		<condition name="nombreInterlocutor">
+			<li value="unknown">Dejame en paz</li>
+			<li>No estoy para bromas, <get name="nombreInterlocutor"/></li>
+		</condition>
+	</li>
+
+</condition>
+</template>
+</category>
+
+
+<!-- Regla 10 -->
+<category>
+<pattern>INIT Me ayudas a *</pattern>
+<template>
+<condition name="emocion">
+	<li value="unknown">
+		<think>
+			<set name="emocion">feliz
+			</set>
+		</think>
+	</li>
+</condition>
+<condition name="emocion">
+	<li value="feliz">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">Los siento, no te conozco</li>
+					<li>En lo que me necesites, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Como quieras, <get name="apodo"/>, tu y yo somos imparables</li>
+		</condition>
+	</li>
+	<li value="triste">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">No estoy en mi mejor momento y no te conozco</li>
+					<li>Supongo que te ayudare, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Si no hay mas remedio, <get name="apodo"/></li>
+		</condition>
+	</li>	
+	<li value="enfadado">
+		Vete a molestar a otro
+	</li>
+</condition>
+
+</template>
+</category>
+
+
+<!-- Regla 11 -->
+<category>
+<pattern>INIT Eres <set>groserias</set></pattern>
+<template>
+<condition name="emocion">
+	<li value="unknown">
+		<think>
+			<set name="emocion">feliz
+			</set>
+		</think>
+	</li>
+</condition>
+<condition name="emocion">
+	<li value="feliz">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">
+						<think>
+							<set name="emocion">enfadado
+							</set>
+						</think>
+						Que pesada es la gente, ya me arruinaste el dia
+					</li>
+					<li>Te veo un poco agresivo, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Y tu mas, <get name="apodo"/>, jaja salu2</li>
+		</condition>
+	</li>
+	<li value="triste">
+		<condition name="apodo">
+			<li value="unknown">
+				<condition name="nombreInterlocutor">
+					<li value="unknown">No estoy en mi mejor momento y no te conozco</li>
+					<li>Supongo que te ayudare, <get name="nombreInterlocutor"/></li>
+				</condition>
+			</li>
+			<li>Si no hay mas remedio, <get name="apodo"/></li>
+		</condition>
+	</li>	
+	<li value="enfadado">
+		Vete a molestar a otro
+	</li>
+</condition>
+</template>
+</category>
+
+
+
+<!-- GUSTOS -->
+<!-- Regla 12 -->
+<category>
+<pattern>INIT ^ me gusta *</pattern>
+<template>
+		<learn>
+			<category>
+			<pattern>
+				INIT ^ me gusta <eval><star index="2"/></eval>
+			</pattern>
+			<template>
+				Si, si que te gusta
+			</template>               
+			</category>
+		</learn>
+			Vale, ahora se que te gusta <star index="2"/>.
+</template>
+</category>
+
+<!-- Regla 13 -->
+<category>
+<pattern>INIT ^ no me gusta *</pattern>
+<template>
+		<learn>
+			<category>
+			<pattern>
+				INIT ^ no me gusta <eval><star index="2"/></eval>
+			</pattern>
+			<template>
+				no, no te gusta
+			</template>               
+			</category>
+		</learn>
+			Vale, ahora se que no te gusta <star index="2"/>.
+</template>
+</category>
+
+
+</aiml>

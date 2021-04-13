@@ -1,0 +1,6 @@
+CDI:Arno Formella
+Concurrencia y distribucion:Arno Formella
+HAE:Carlos Castro
+Hardware de aplicacion especifica:Carlos Castro
+SI:Juan Carlos
+Sistemas inteligentes:Juan Carlos

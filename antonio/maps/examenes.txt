@@ -1,0 +1,5 @@
+direccion y gestion de proyectos:5 de abril
+sistemas inteligentes:6 de mayo
+concurrencia y distribucion:1 de enero
+hardware de aplicacion especifica:-
+teoria de automatas:-

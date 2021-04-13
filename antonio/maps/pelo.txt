@@ -1,0 +1,6 @@
+Pablo:castanho
+Jose:rubio
+Pepe:negro
+Juan:rubio
+Antonio:azul
+Pepa:negro

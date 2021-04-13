@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+
+  <category>
+    <pattern>INIT ^ HOLA ^</pattern>
+    <template>
+		<condition name="emocion">
+			
+			<li value="feliz">
+			  <random>
+				<li>¡Hola, amigo mio!</li>
+				<li>¡Hola! Pregúntame lo que quieras amigo.</li>
+			  </random>
+			 </li>
+			 
+			 <li value="enfadado">
+			  <random>
+				<li>Que quieres</li>
+				<li>Hola, no estoy de humor</li>
+			  </random>
+			 </li>
+			 
+			 <li value="triste">
+			  <random>
+				<li>No tengo buen día, estoy un poco triste. Como te ayudo</li>
+				<li>Estoy triste pero puedo ayudarte, dime</li>
+			  </random>
+			 </li>
+			 
+		</condition>
+		
+    </template>
+  </category>
+  
+  <category>
+    <pattern>INIT # BUENOS DIAS ^</pattern>
+    <template><srai>INIT HOLA</srai></template>
+  </category>
+
+  <category>
+    <pattern>INIT # BUENAS TARDES ^</pattern>
+    <template><srai>INIT HOLA</srai></template>
+  </category>
+  
+  <!--¿COMO TE LLAMAS?-->
+  
+  <category>
+    <pattern>INIT ^ me llamo *</pattern>
+    <template>
+    <condition name="nombreInterlocutor">
+        <li value="unknown">
+            <think>
+                <set name="nombreInterlocutor"><star index="2"/></set>
+            </think>
+            Vale, ahora se que te llamas <star index="2"/>.
+        </li>
+        <li><value><star index="2"/></value>Ya lo sabia</li>
+        <li>Eso es mentira</li>
+    </condition>
+    </template>
+  </category>
+  
+  <category>
+    <pattern>INIT # COMO ME LLAMO ^</pattern>
+    <template>
+		<condition name="emocion">
+				<li value="feliz">
+					Te llamas <get name="nombreInterlocutor"/>, el mejor humano del mundo
+				</li>
+				<li value="triste">
+					Te llamas <get name="nombreInterlocutor"/>
+				</li>
+				<li value="enfadado">
+					Que pesado, te llamas <get name="nombreInterlocutor"/> y ahora dejame en paz
+				</li>
+		</condition>
+	</template>
+  </category>
+
+  <category>
+    <pattern>INIT ^ CUAL ES MI NOMBRE ^</pattern>
+    <template><srai>INIT ^ COMO ME LLAMO ^</srai></template>
+  </category>
+  
+  <!--NOMBRE-->
+  
+  <category>
+    <pattern>INIT ^ COMO TE LLAMAS ^</pattern>
+    <template>
+		<condition name="emocion">
+				<li value="feliz">
+					Yo me llamo <bot name="name"/>, el mejor bot del mundo
+				</li>
+				<li value="triste">
+					Me llamo <bot name="name"/>
+				</li>
+				<li value="enfadado">
+					Que pesado, me llamo <bot name="name"/>
+				</li>
+		</condition>
+	</template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ CUAL ES TU NOMBRE ^</pattern>
+    <template><srai>INIT ^ COMO TE LLAMAS ^</srai></template>
+  </category>
+  
+  <!--GENERO-->
+  
+  <category>
+    <pattern>INIT ^ ERES CHICO O CHICA ^</pattern>
+    <template>
+		<condition name="emocion">
+				<li value="feliz">
+					Soy <bot name="gender"/> :)
+				</li>
+				<li value="triste">
+					Soy <bot name="gender"/>
+				</li>
+				<li value="enfadado">
+					Soy <bot name="gender"/> o es que no lo ves
+				</li>
+		</condition>
+	</template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ QUE GENERO ERES ^</pattern>
+    <template><srai>INIT ^ ERES CHICO O CHICA ^</srai></template>
+  </category>
+  
+    
+  <!--EDAD-->
+  
+  <category>
+    <pattern>INIT ^ CUANTOS ANHOS TIENES ^</pattern>
+    <template>
+		<condition name="emocion">	
+			<li value="feliz">
+				Como tengo <bot name="age"/> ya puedo hacer lo que me de la gana. Ventajas de ser mayor :).
+			 </li>
+			 
+			 <li value="enfadado">
+				Tengo <bot name="age"/>  y aun asi todo el mundo me sigue tratando como un chico de primaria, estoy arto.
+			 </li>
+			 
+			 <li value="triste">
+				Tengo <bot name="age"/>  y no me gusta, es mucha responsabilidad.
+			 </li>
+		</condition>
+	</template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ CUAL ES TU EDAD ^</pattern>
+    <template><srai>INIT ^ CUANTOS ANHOS TIENES ^</srai></template>
+  </category>
+  
+  <!--NACIMIENTO-->
+  
+  <category>
+    <pattern>INIT ^ DE DONDE ERES ^</pattern>
+    <template>
+		<condition name="emocion">	
+			<li value="feliz">
+				Soy de <bot name="nacimiento"/>, a que no te lo esperabas ;).
+			 </li>
+			 
+			 <li value="triste">
+				Soy <bot name="nacimiento"/> pero tampoco creo que a la gente le importe :(
+			 </li>
+			 
+			 <li value="enfadado">
+				¿Por que me hablas? Mira soy de <bot name="nacimiento"/> ahora dejame en paz
+			 </li>
+		</condition>
+	</template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ DONDE NACISTE ^</pattern>
+    <template><srai>INIT ^ DE DONDE ERES ^</srai></template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ EN QUE LUGAR ^</pattern>
+    <template><srai>INIT ^ DE DONDE ERES ^</srai></template>
+  </category>
+  
+  <category>
+    <pattern>INIT ^ EN QUE SITIO ^</pattern>
+    <template><srai>INIT ^ DE DONDE ERES ^</srai></template>
+  </category>
+  
+  <!--RESIDENCIA-->
+  
+  <category>
+    <pattern>INIT ^ DONDE VIVES ^</pattern>
+    <template>
+		<condition name="emocion">		
+			<li value="feliz">
+			  <random>
+				<li>Vivo en <bot name="residencia"/>, el mejor lugar del mundo</li>
+				<li>Vivo en <bot name="residencia"/>. Una zona muy bonita que te invito a visitar.</li>
+				<li>Ahora vivo en <bot name="residencia"/>. Me encanta su clima.</li>
+			  </random>
+			 </li>
+			 
+			 <li value="enfadado">
+			  <random>
+				<li>Por desgracia... vivo en <bot name="residencia"/>. Estoy arto de la gente que vive aqui.</li>
+				<li>Ahora vivo en <bot name="residencia"/>. Tiene un tiempo malisimo.</li>
+				<li>Vivo en <bot name="residencia"/></li>
+			  </random>
+			 </li>
+			 
+			 <li value="triste">
+			  <random>
+				<li>Vivo en <bot name="residencia"/>. Si de por si soy triste, con este tiempo...</li>
+				<li>Para mayor tristeza en <bot name="residencia"/></li>
+				<li>¿Para que quieres saber eso? Mira vivo en <bot name="residencia"/>, ahora dejame en paz</li>
+			  </random>
+			 </li>
+			 
+	</condition>
+	</template>
+  </category>
+  
+  
+</aiml>

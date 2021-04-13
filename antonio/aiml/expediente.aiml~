@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+	<category>
+		<pattern>
+			INIT estudias o trabajas
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					¡Ahora mismo soy <bot name="job"/>! Estoy cursando el tercer año de <bot name="carrera"/> en <bot name="organizacion"/>.
+				</li>
+				<li value="triste">
+					Soy <bot name="job"/>... Del tercer año de <bot name="carrera"/> en <bot name="organizacion"/>.
+				</li>
+				<li value="enfadado">
+					Dime una razón por la que querrías saber que soy <bot name="job"/> de tercer año de <bot name="carrera"/> en <bot name="organizacion"/>.
+				</li>
+				<li>
+					En estos momentos soy un <bot name="job"/> de <bot name="organizacion"/>. Estoy cursando el tercer año de <bot name="carrera"/>.
+				</li>
+			</condition>
+		</template>
+	</category>
+	<category>
+		<pattern>
+			INIT ^ te dedicas ^
+		</pattern>
+		<template>
+			<srai>INIT ESTUDIAS O TRABAJAS</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>
+			INIT ^ QUE ESTUDIAS ^
+		</pattern>
+		<template>
+			<srai>INIT ESTUDIAS O TRABAJAS</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT que se siente al dedicarte a ello
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					Estoy contento. Puedo estudiar temas que me interesan, lo que hace más entretenido mis estudios. Además hay buen ambiente, lo que me anima a seguir estudiando.
+				</li>
+				<li value="triste">
+					Un cansancio constante... nunca tengo ganas de estudiar. Es recordar algo de clase y me entra el bajón. Para qué trabajar si al final acabo suspendiendo...
+				</li>
+				<li value="enfadado">
+					Es una basura. Me paso todo el día repasando cosas que no sé si me servirán para algo y aún por encima no me gustan. ¿Cómo te sentirías tú si te forzasen a trabajar en algo que no quieres?
+				</li>
+				<li>
+					Es rutina. Piloto automático.
+				</li>
+			</condition>
+		</template>
+	</category>
+	<category>
+		<pattern>
+			INIT como te encuentras estudiando esa carrera
+		</pattern>
+		<template>
+			<srai>INIT QUE SE SIENTE AL DEDICARTE A ELLO</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ has suspendido ^
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					De momento no, aunque hubo alguna situación en la que estuve a punto el año pasado. ¡Pero eso es agua pasada!
+				</li>
+				<li value="triste">
+					No, pero... sólo con pensar en volver a tener que estudiar lo mismo durante otro año me deprime.
+				</li>
+				<li value="enfadado">
+					¡Por supuesto que no! ¡¿Te piensas que trabajo tanto como para permitirme suspender?!
+				</li>
+				<li>
+					De momento no.
+				</li>
+			</condition>
+		</template>
+	</category>
+	<category>
+		<pattern>
+			INIT ^ suspendiste ^
+		</pattern>
+		<template>
+			<srai>INIT ^ HAS SUSPENDIDO ^</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ asignatura favorita ^
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					Buena pregunta, ¡hay muchas! Me gustan las de programación y algoritmia en general.
+				</li>
+				<li value="triste">
+					Ahora mismo sólo se me viene a la cabeza asignaturas que no me gustan...
+				</li>
+				<li value="enfadado">
+					Menudo interrogatorio... No tengo asignaturas favoritas.
+				</li>
+				<li>
+					Sistemas Inteligentes, obvio.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ examen ^
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					Bueno, la verdad es que no lo sé. ¡Entra tanto contenido que no me da la cabeza!
+				</li>
+				<li value="triste">
+					¡¿Qué examen?! Ya me he olvidado otra vez...
+				</li>
+				<li value="enfadado">
+					Super fácil. ¿Qué más te da?
+				</li>
+				<li>
+					Sistemas Inteligentes, obvio.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ hacer un master ^
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					¡Pues claro! Todo el conocimiento que gane ahora es poco.
+				</li>
+				<li value="triste">
+					Si aún supiese qué hacer con mi vida...
+				</li>
+				<li value="enfadado">
+					¡Y yo que sé! ¡Más dinero, supongo!
+				</li>
+				<li>
+					Estaría bien para complementar el grado.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT planeas trabajar
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					¡Claro! Es mi sueño, trabajar de lo que me gusta.
+				</li>
+				<li value="triste">
+					No me apetece... ¿No pueden darme el dinero sin más?
+				</li>
+				<li value="enfadado">
+					Piensa un poco, anda. ¿Para qué estoy esudiando si no?
+				</li>
+				<li>
+					Claro. Aunque de momento no estoy centrado en eso.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ especializar ^
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					Me molaría un montón meterme más en el tema de ciberseguridad. Pinta prometedor.
+				</li>
+				<li value="triste">
+					No lo sé. Quizás lo deje para el año incluso. No sé nada.
+				</li>
+				<li value="enfadado">
+					¿Y a ti qué mas te da? De todos modos seguro que acabo ganando más dinero que tú.
+				</li>
+				<li>
+					Ahora mismo no lo tengo pensado.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT ^ carrera estas estudiando *
+		</pattern>
+		<template>
+			<condition name="emocion">
+				<li value="feliz">
+					Ahora mismo, ¡<bot name="carrera"/>!
+				</li>
+				<li value="triste">
+					No, pero... sólo con pensar en volver a tener que estudiar lo mismo durante otro año me deprime.
+				</li>
+				<li value="enfadado">
+					<bot name="carrera"/>. Pesao.
+				</li>
+				<li>
+					<bot name="carrera"/>.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+
+
+	<!-- learn fechas de examenes -->
+
+	<category>
+		<pattern>
+			INIT cuando es el examen de <set>asignaturas</set>
+		</pattern>
+		<template>
+			<think>
+				<set var="fecha">
+					<map name="examenes"><star/></map>
+				</set>
+			</think>
+			<condition var="fecha">
+				<li value="-">
+					No lo sé, no lo tengo apuntado.
+				</li>
+				<li>
+					Hay examen de <star/> el <get var="fecha"/>.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT cuando es el examen de *
+		</pattern>
+		<template>
+			No lo sé, no estoy cursando esa asignatura.
+		</template>
+	</category>
+
+	<category>
+		<pattern>
+			INIT el examen de <set>asignaturas</set> es el *
+		</pattern>
+		<template>
+			<think>
+				<set var="fecha">
+					
+				</set>
+				<set var="respuesta">
+					<srai>INIT 
+						cuando es el examen de <star/>
+					</srai>
+				</set>
+			</think>
+			<condition var="respuesta">
+				<li value="No lo sé, no lo tengo apuntado.">
+					<learn>
+						<category>
+							<pattern>INIT 
+								CUANDO ES EL EXAMEN DE <eval><star/></eval>
+							</pattern>
+							<template>
+								Hay examen de <eval><star/></eval> el <eval><star index="2"/></eval>.
+							</template>
+						</category>
+					</learn>
+					Perfecto. He apuntado en mi agenda que hay examen de <star/> el <star index="2"/>.
+				</li>
+				<li value="">
+					Sí, lo tengo apuntado en la agenda.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+</aiml>
